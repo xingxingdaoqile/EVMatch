@@ -2,7 +2,7 @@
 dataset: pascal
 nclass: 21
 crop_size: 312
-data_root: /kaggle/input/pascal/JPEGImages
+data_root: /kaggle/input/pascal
 
 # arguments for training
 epochs: 80
