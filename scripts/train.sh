@@ -29,7 +29,7 @@ python -m torch.distributed.run \
     /kaggle/working/EVMatch/$method.py \
     --config=$config --labeled-id-path $labeled_id_path --unlabeled-id-path $unlabeled_id_path \
     --save-path $save_path \
-    --port $2 2>&1 | tee >awk '!/Value: / {print > "'${save_path}/${now}.log'"}')
+    --port $2 2>&1 | tee >(awk '!/Value: / {print > "'${save_path}/${now}.log'"}')
     #--port $2 2>&1 | tee >(awk '!/Value: / {print > "'${save_path}/${now}.log'"}')
 #    --with_cp \
 
