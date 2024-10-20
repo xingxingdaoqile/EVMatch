@@ -13,10 +13,10 @@ exp='r101'
 split='1_4'
 no='312_2'
 
-config=configs/${dataset}.yaml
-labeled_id_path=splits/$dataset/$split/labeled.txt
-unlabeled_id_path=splits/$dataset/$split/unlabeled.txt
-save_path=/media/ubuntu/087C652D7C65172A/zhk-data/log/exp/$dataset/$method/$exp/${split}_${no}
+config=/kaggle/working/EVMatch/configs/${dataset}.yaml
+labeled_id_path=/kaggle/working/EVMatch/splits/$dataset/$split/labeled.txt
+unlabeled_id_path=/kaggle/working/EVMatch/splits/$dataset/$split/unlabeled.txt
+save_path=/kaggle/working/EVMatch/exp/$dataset/$method/$exp/${split}_${no}
 # save_path=/root/autodl-nas/exp/$dataset/$method/$exp/${split}_${no}
 # save_path=exp/$dataset/$method/$exp/${split}_${no}
 
@@ -26,7 +26,7 @@ python -m torch.distributed.run \
     --nproc_per_node=$1 \
     --master_addr=localhost \
     --master_port=$2 \
-    $method.py \
+    /kaggle/working/EVMatch/$method.py \
     --config=$config --labeled-id-path $labeled_id_path --unlabeled-id-path $unlabeled_id_path \
     --save-path $save_path \
     --port $2 2>&1 | tee >(awk '!/Value: / {print > "'${save_path}/${now}.log'"}')

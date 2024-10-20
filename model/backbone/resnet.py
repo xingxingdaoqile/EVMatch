@@ -180,7 +180,7 @@ def _resnet(arch, block, layers, pretrained, **kwargs):
     # 加载预训练权重: 使用 torch.load 函数从指定路径加载预训练权重。返回的 state_dict 是一个包含模型参数（权重和偏置）的字典
     #加载权重到模型: 将加载的 state_dict 中的权重加载到模型中。strict=False 表示如果 state_dict 中包含某些参数而模型中没有，或者模型中有而 state_dict 中没有，也不会抛出错误。这对于模型结构的轻微变更是有用的
     if pretrained:
-        pretrained_path = "pretrained/%s.pth" % arch
+        pretrained_path = "/kaggle/input/resnet101/pytorch/default/1/%s.pth" % arch
         state_dict = torch.load(pretrained_path)
         model.load_state_dict(state_dict, strict=False)
     return model
