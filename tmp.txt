@@ -1,0 +1,3 @@
+tmux new -s train_session
+conda activate zhk-unimatch
+cd
